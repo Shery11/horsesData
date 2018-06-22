@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Filter Horses</title>
+		<script src="js/filter.js"></script>
+		<link rel="stylesheet" href="style.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css"/>
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		<script>
+  			// Initialize Firebase
+  			var config = {
+    			apiKey: "AIzaSyAUZpkXRiQWkM2J-QIc_G8jkCEl60POk7Q",
+			     authDomain: "horses2-3761f.firebaseapp.com",
+			     databaseURL: "https://horses2-3761f.firebaseio.com",
+			     projectId: "horses2-3761f",
+			     storageBucket: "horses2-3761f.appspot.com",
+			     messagingSenderId: "242011153156"
+  			};
+  			firebase.initializeApp(config);
+			var rootRef = firebase.database().ref();
+		</script>
+
+	</head>
+
+	<body>
+		<!-- Uses a header that scrolls with the text, rather than staying locked at the top -->
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--scroll">
+				<div class="mdl-layout__header-row">
+					<!-- Title -->
+					<span class="mdl-layout-title">Filter Horses</span>
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+				<div class="page-content"><!-- Your content goes here -->
+					<!--  FILTERING FORM -->
+					<form action="results.html" method="get" id="form">
+						<div class="wrapper">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col title">Horses Filter</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="adminNF" name="adminNF">
+										<label class="mdl-textfield__label" for="adminNF">Admin NF</label>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="sex" name="sex">
+										<label class="mdl-textfield__label" for="sex">Sex</label>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="dateFrom" name="dateFrom">
+										<label class="mdl-textfield__label" for="dateFrom">Born date from</label>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="dateTo" name="dateTo">
+										<label class="mdl-textfield__label" for="dateTo">Born date to</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<br>
+						<div class="wrapper">
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--12-col title">Competitions Filter</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="cDateFrom" name="cDateFrom">
+										<label class="mdl-textfield__label" for="cDateFrom">Start date from</label>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="cDateTo" name="cDateTo">
+										<label class="mdl-textfield__label" for="cDateTo">Start date to</label>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="minHeight" name="minHeight">
+										<label class="mdl-textfield__label" for="minHeight">Minimum obstacle height</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--3-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="maxHeight" name="maxHeight">
+										<label class="mdl-textfield__label" for="maxHeight">Maximum obstacle height</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+							</div>
+							<div class="mdl-grid">
+								<div class="mdl-cell mdl-cell--4-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="minNumber" name="minNumber">
+										<label class="mdl-textfield__label" for="minNumber">Minimum number of competitions</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--4-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="maxFault" name="maxFault">
+										<label class="mdl-textfield__label" for="maxFault">Maximum fault</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--4-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="reqScore" name="reqScore">
+										<label class="mdl-textfield__label" for="reqScore">Required score percentage</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--4-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="maxPosition" name="maxPosition">
+										<label class="mdl-textfield__label" for="maxPosition">Maximum position</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+								<div class="mdl-cell mdl-cell--4-col">
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="reqPosition" name="reqPosition">
+										<label class="mdl-textfield__label" for="reqPosition">Required position percentage</label>
+										<span class="mdl-textfield__error">Input is not a number!</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--6-col">
+								<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="limit" name="limit">
+									<label class="mdl-textfield__label" for="limit">Limit search to N records</label>
+									<span class="mdl-textfield__error">Input is not a number!</span>
+								</div>
+							</div>
+							<div class="mdl-cell mdl-cell--6-col">
+								<button id="search_btn" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+									Apply Filters
+								</button>
+							</div>
+						</div>
+					</form>
+
+					<!-- RESULTS TABLE-->
+
+
+
+
+
+
+				</div>
+			</main>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,52 @@
+.mdl-layout-title a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.title {
+	color: black;
+	font-weight: bold;
+	font-size: 18px;
+}
+.wrapper{
+	border: 1px solid rgba(0,0,0,.5);
+	margin: 10px;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+form .mdl-textfield__label {
+	color: rgba(0,0,0,.7);
+}
+
+table{
+	margin: 0 auto;
+}
+table#results th{
+	text-align: center;
+	font-size: 14px;
+}
+table #results_list td{
+	text-align: center;
+}
+table#horse th{
+	text-align: center;
+	font-size: 14px;
+}
+table #horse_info td{
+	text-align: center;
+}
+
+#no_results {
+	text-align: center;
+}
+
+#loading {
+	position: absolute;
+	left: 50%;
+	width: 70px;
+	height: 70px;
+}
+#loading .mdl-spinner__circle{
+	border-width: 5px;
+}

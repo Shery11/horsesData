@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Filter Results</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="js/jquery.tablesorter.min.js"></script>
+		<script src="js/results.js"></script>
+		<link rel="stylesheet" href="style.css"/>
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css"/>
+		<link rel="stylesheet" href="theme/style.css"/>
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		<script>
+  			// Initialize Firebase
+  			var config = {
+    			 apiKey: "AIzaSyAUZpkXRiQWkM2J-QIc_G8jkCEl60POk7Q",
+			     authDomain: "horses2-3761f.firebaseapp.com",
+			     databaseURL: "https://horses2-3761f.firebaseio.com",
+			     projectId: "horses2-3761f",
+			     storageBucket: "horses2-3761f.appspot.com",
+			     messagingSenderId: "242011153156"
+  			};
+  			firebase.initializeApp(config);
+			var rootRef = firebase.database().ref();
+		</script>
+	</head>
+
+	<body>
+		<!-- Uses a header that scrolls with the text, rather than staying locked at the top -->
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--scroll">
+				<div class="mdl-layout__header-row">
+					<!-- Title -->
+					<span class="mdl-layout-title"><a href="filter.html">Go Back To Filter</a></span>
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+				<div class="page-content"><!-- Your content goes here -->
+					<!--  RESULTS TABLE  -->
+					<table id="results" class="tablesorter mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+						<thead>
+							<tr>
+								<th>FEIID</th>
+								<th>Admin NF</th>
+								<th>Name</th>
+								<th>Athlete</th>
+								<th>Sex</th>
+								<th>Date Of Birth</th>
+								<th>Placing %</th>
+								<th>Faults %</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="results_list">
+
+						</tbody>
+					</table>
+
+					<h2 id="no_results"></h2>
+
+					<div id="loading" class="mdl-spinner mdl-js-spinner is-active"></div>
+				</div>
+			</main>
+		</div>
+	</body>
+
+</html>

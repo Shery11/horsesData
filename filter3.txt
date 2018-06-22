@@ -1,0 +1,13 @@
+
+1. We have filter2horses
+bext steps will happen for each horse.
+2. Filter all the competitions that have obstHeight that is provided and save it in an array.
+3. Filter those competitons using the date range save it in an array.
+4. check for clear rounds in that array. 
+5. if clear rounds found
+    then 
+      check previous array  for the clear rounds before the startDate
+        if yes 
+          disregard
+         else
+           include in list 
